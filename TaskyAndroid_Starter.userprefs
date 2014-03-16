@@ -1,0 +1,45 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Tasky.Core\BeaconRepositoryADO.cs">
+    <Files>
+      <File FileName="TaskyAndroid\Screens\HomeScreen.cs" Line="6" Column="7" />
+      <File FileName="TaskyAndroid\Adapters\BeaconListAdapter.cs" Line="4" Column="7" />
+      <File FileName="TaskyAndroid\Screens\BeaconDetailsScreen.cs" Line="5" Column="12" />
+      <File FileName="Tasky.Core\BeaconManager.cs" Line="4" Column="16" />
+      <File FileName="Tasky.Core\BeaconRepositoryADO.cs" Line="8" Column="40" />
+      <File FileName="Tasky.Core\BeaconDatabaseADO.cs" Line="9" Column="16" />
+      <File FileName="Tasky.Core\Beacon.cs" Line="3" Column="16" />
+      <File FileName="TaskyAndroid\Assets\AboutAssets.txt" Line="15" Column="2" />
+      <File FileName="TaskyAndroid\Properties\AssemblyInfo.cs" Line="29" Column="39" />
+      <File FileName="TaskyAndroid\Properties\AndroidManifest.xml" Line="8" Column="12" />
+      <File FileName="TaskyAndroid\Resources\AboutResources.txt" Line="1" Column="1" />
+      <File FileName="TaskyAndroid\Resources\values\Strings.xml" Line="3" Column="36" />
+      <File FileName="TaskyAndroid\Resources\Resource.designer.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Beacons.Core.Android" expanded="True">
+            <Node name="BeaconRepositoryADO.cs" selected="True" />
+          </Node>
+          <Node name="NeuBeaconsAndroid" expanded="True">
+            <Node name="Adapters" expanded="True" />
+            <Node name="Assets" expanded="True" />
+            <Node name="Properties" expanded="True" />
+            <Node name="Resources" expanded="True">
+              <Node name="layout" expanded="True" />
+              <Node name="values" expanded="True" />
+            </Node>
+            <Node name="Screens" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <AuthorInfo Name="Suresh.Balla" Email="" Copyright="Suresh.Balla" Company="" Trademark="" />
+  <MonoDevelop.Ide.ItemProperties.NeuBeaconsAndroid AndroidDeviceId-Debug="emulator-5554" MonoForAntroid.PreferredDevice="3.7&quot; WVGA (Nexus One)" />
+</Properties>

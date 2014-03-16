@@ -1,0 +1,3 @@
+TaskyAndroid.Screens.HomeScreen;taskyandroid.screens.HomeScreen
+TaskyAndroid.Screens.BeaconDetailsScreen;taskyandroid.screens.BeaconDetailsScreen
+TaskyAndroid.Adapters.BeaconListAdapter;taskyandroid.adapters.BeaconListAdapter

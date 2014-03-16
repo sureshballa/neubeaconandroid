@@ -1,0 +1,2 @@
+C:\Suresh\Xamarin Projects\NeuBeaconsAndroid\NeuBeaconAndroid\bin\Debug\TaskyAndroid.dll
+C:\Suresh\Xamarin Projects\NeuBeaconsAndroid\Beacon.Core\bin\Debug\Tasky.Core.Anroid.dll

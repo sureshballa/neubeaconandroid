@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.neudesic.beacons">
+  <application android:debuggable="true" android:icon="@drawable/icon" android:label="NeuBeacons" android:name="mono.android.app.Application">
+    <activity android:icon="@drawable/icon" android:label="Beacons" android:name="taskyandroid.screens.HomeScreen" />
+    <activity android:label="BeaconDetailsScreen" android:name="taskyandroid.screens.BeaconDetailsScreen" />
+    <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="com.neudesic.beacons.mono.MonoRuntimeProvider.__mono_init__" />
+    <receiver android:name="mono.android.Seppuku">
+      <intent-filter>
+        <action android:name="mono.android.intent.action.SEPPUKU" />
+        <category android:name="mono.android.intent.category.SEPPUKU.com.neudesic.beacons" />
+      </intent-filter>
+    </receiver>
+    <activity android:icon="@drawable/icon" android:label="Beacons" android:name="com.neudesic.beacons.TrialSplashScreen" android:theme="@style/Mono.Android.Theme.Splash" android:noHistory="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+  </application>
+  <uses-sdk android:minSdkVersion="10" />
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.INTERNET" />
+</manifest>
