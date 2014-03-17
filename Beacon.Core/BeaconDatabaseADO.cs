@@ -8,6 +8,7 @@ using System.Data;
 using System.Json;
 using System.Net;
 using System.Threading.Tasks;
+using System.Text;
 
 namespace NeuBeacons.Core
 {
@@ -33,19 +34,22 @@ namespace NeuBeacons.Core
 		public IEnumerable<Beacon> GetItems ()
 		{
 			var result = Task.Run<IEnumerable<Beacon>> (async () => {
+				httpReq = (HttpWebRequest)HttpWebRequest.Create (new Uri (this.path));
 				var response = await httpReq.GetResponseAsync();
 				List<Beacon> beacons = new List<Beacon>();
-				StreamReader stream = new StreamReader(response.GetResponseStream());
-				var resultString = stream.ReadToEnd();
-				var jsonObject =JsonObject.Parse(resultString);
-
-				foreach(var beacon in (JsonArray)jsonObject)
+				using(StreamReader stream = new StreamReader(response.GetResponseStream()))
 				{
-					var obj = beacon as JsonObject;
-					if(obj.ContainsKey("title") && obj.ContainsKey("description"))
+					var resultString = stream.ReadToEnd();
+					var jsonObject =JsonObject.Parse(resultString);
+
+					foreach(var beacon in (JsonArray)jsonObject)
 					{
-						beacons.Add(new Beacon() { Name = obj["title"] != null? obj["title"].ToString(): "", 
-							Notes = obj["description"] != null? obj["description"].ToString(): "" });
+						var obj = beacon as JsonObject;
+						if(obj.ContainsKey("title") && obj.ContainsKey("description"))
+						{
+							beacons.Add(new Beacon() { Name = obj["title"] != null? obj["title"].ToString(): "", 
+								Notes = obj["description"] != null? obj["description"].ToString(): "" });
+						}
 					}
 				}
 
@@ -64,7 +68,29 @@ namespace NeuBeacons.Core
 
 		public int SaveItem (Beacon item) 
 		{
-			return 0;
+			var result = Task.Run<int> (async () => {
+				httpReq = (HttpWebRequest)HttpWebRequest.Create (new Uri (this.path));
+				httpReq.Method = "POST";
+				httpReq.ContentType = "application/json";
+				string postData = "{\"_id\": \"ibeacon2UUID\", \"Title\": \"" + item.Name + "\", \"Description\": \"beacons1description\"}";
+				byte[] byteArray = Encoding.UTF8.GetBytes (postData);
+				httpReq.ContentLength = byteArray.Length;
+				Stream dataStream = httpReq.GetRequestStream ();
+				dataStream.Write(byteArray, 0, byteArray.Length);
+				dataStream.Close();
+				var response = await httpReq.GetResponseAsync();
+				var resultString = "0";
+				using(StreamReader stream = new StreamReader(response.GetResponseStream()))
+				{
+					resultString = stream.ReadToEnd();
+				}
+
+				return int.Parse(resultString);
+
+			}).Result;
+
+
+			return result;
 		}
 
 		public int DeleteItem(int id) 

@@ -11,7 +11,7 @@ public class BeaconDetailsScreen
 		__md_methods = 
 			"n_onCreate:(Landroid/os/Bundle;)V:GetOnCreate_Landroid_os_Bundle_Handler\n" +
 			"";
-		mono.android.Runtime.register ("NeuBeaconsAndroid.Screens.BeaconDetailsScreen, NeuBeaconsAndroid, Version=1.0.5189.40223, Culture=neutral, PublicKeyToken=null", BeaconDetailsScreen.class, __md_methods);
+		mono.android.Runtime.register ("NeuBeaconsAndroid.Screens.BeaconDetailsScreen, NeuBeaconsAndroid, Version=1.0.5189.41462, Culture=neutral, PublicKeyToken=null", BeaconDetailsScreen.class, __md_methods);
 	}
 
 
@@ -19,7 +19,7 @@ public class BeaconDetailsScreen
 	{
 		super ();
 		if (getClass () == BeaconDetailsScreen.class)
-			mono.android.TypeManager.Activate ("NeuBeaconsAndroid.Screens.BeaconDetailsScreen, NeuBeaconsAndroid, Version=1.0.5189.40223, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
+			mono.android.TypeManager.Activate ("NeuBeaconsAndroid.Screens.BeaconDetailsScreen, NeuBeaconsAndroid, Version=1.0.5189.41462, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
 	}
 
 
