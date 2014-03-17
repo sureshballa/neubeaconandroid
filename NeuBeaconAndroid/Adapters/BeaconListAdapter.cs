@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using Android.App;
 using Android.Widget;
-using Tasky.Core;
+using NeuBeacons.Core;
 
-namespace TaskyAndroid.Adapters {
+namespace NeuBeacons.Adapters {
 	/// <summary>
 	/// Adapter that presents Tasks in a row-view
 	/// </summary>

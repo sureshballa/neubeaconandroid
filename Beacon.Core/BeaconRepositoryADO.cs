@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Tasky.Core {
+namespace NeuBeacons.Core {
 	public class BeaconRepositoryADO {
 		BeaconDatabase db = null;
 		protected static string dbLocation;		

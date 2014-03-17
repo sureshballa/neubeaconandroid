@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("TaskyAndroid.Resource", IsApplication=true)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("NeuBeacons.Resource", IsApplication=true)]
 
-namespace TaskyAndroid
+namespace NeuBeacons
 {
 	
 	

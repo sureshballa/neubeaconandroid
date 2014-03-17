@@ -9,7 +9,7 @@ using System.Json;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace Tasky.Core
+namespace NeuBeacons.Core
 {
 	/// <summary>
 	/// TaskDatabase uses ADO.NET to create the [Items] table and create,read,update,delete data

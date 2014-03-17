@@ -1,6 +1,6 @@
 using System;
 
-namespace Tasky.Core {
+namespace NeuBeacons.Core {
 	/// <summary>
 	/// Beacon business object
 	/// </summary>

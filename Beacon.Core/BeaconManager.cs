@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Tasky.Core {
+namespace NeuBeacons.Core {
 	/// <summary>
 	/// Manager classes are an abstraction on the data access layers
 	/// </summary>

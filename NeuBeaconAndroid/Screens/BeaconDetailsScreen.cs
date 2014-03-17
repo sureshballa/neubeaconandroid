@@ -2,10 +2,10 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Widget;
-using Tasky.Core;
-using TaskyAndroid;
+using NeuBeacons.Core;
+using NeuBeacons;
 
-namespace TaskyAndroid.Screens {
+namespace NeuBeacons.Screens {
 	/// <summary>
 	/// View/edit a Task
 	/// </summary>
