@@ -16,10 +16,10 @@ namespace Tasky.Core {
 		protected BeaconRepositoryADO ()
 		{
 			// set the db location
-			dbLocation = DatabaseFilePath;
+			//dbLocation = DatabaseFilePath;
 
 			// instantiate the database	
-			db = new BeaconDatabase(dbLocation);
+			db = new BeaconDatabase("http://neuibeaconsservice.herokuapp.com/ibeacons");
 		}
 
 		public static string DatabaseFilePath {
