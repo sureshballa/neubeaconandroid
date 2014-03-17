@@ -4,9 +4,9 @@ using Android.Content;
 using Android.OS;
 using Android.Widget;
 using NeuBeacons.Core;
-using NeuBeacons;
+using NeuBeaconsAndroid;
 
-namespace NeuBeacons.Screens {
+namespace NeuBeaconsAndroid.Screens {
 	/// <summary>
 	/// Main ListView screen displays a list of tasks, plus an [Add] button
 	/// </summary>

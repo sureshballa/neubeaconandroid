@@ -32,7 +32,7 @@ public class TrialSplashScreen extends Activity {
 			public void run ()
 			{
 				finish ();
-				Intent intent = new Intent (TrialSplashScreen.this, neubeacons.screens.HomeScreen.class);
+				Intent intent = new Intent (TrialSplashScreen.this, neubeaconsandroid.screens.HomeScreen.class);
 				intent.setFlags (Intent.FLAG_ACTIVITY_NEW_TASK);
 				startActivity (intent);
 			}

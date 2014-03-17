@@ -8,10 +8,10 @@
     <ProjectGuid>{508E0D21-01E5-4A8C-A09F-AC121EDADEB8}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <RootNamespace>Tasky</RootNamespace>
+    <RootNamespace>Beacons.Core</RootNamespace>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
-    <AssemblyName>Tasky.Core.Anroid</AssemblyName>
+    <AssemblyName>NeuBeacons.Core.Anroid</AssemblyName>
     <TargetFrameworkVersion>v2.3</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

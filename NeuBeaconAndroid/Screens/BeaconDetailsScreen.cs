@@ -3,9 +3,9 @@ using Android.Content;
 using Android.OS;
 using Android.Widget;
 using NeuBeacons.Core;
-using NeuBeacons;
+using NeuBeaconsAndroid;
 
-namespace NeuBeacons.Screens {
+namespace NeuBeaconsAndroid.Screens {
 	/// <summary>
 	/// View/edit a Task
 	/// </summary>

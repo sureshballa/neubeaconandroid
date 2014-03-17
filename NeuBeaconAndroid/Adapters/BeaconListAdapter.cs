@@ -3,7 +3,7 @@ using Android.App;
 using Android.Widget;
 using NeuBeacons.Core;
 
-namespace NeuBeacons.Adapters {
+namespace NeuBeaconsAndroid.Adapters {
 	/// <summary>
 	/// Adapter that presents Tasks in a row-view
 	/// </summary>
