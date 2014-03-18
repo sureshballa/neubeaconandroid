@@ -48,7 +48,7 @@ namespace NeuBeacons.Core
 						var obj = beacon as JsonObject;
 						if(obj.ContainsKey("title") && obj.ContainsKey("description"))
 						{
-							beacons.Add(new Beacon() { Name = obj["title"] != null? obj["title"].ToString(): "", 
+							beacons.Add(new Beacon(false) { Name = obj["title"] != null? obj["title"].ToString(): "", 
 								Notes = obj["description"] != null? obj["description"].ToString(): "",
 								ID = obj["_id"] != null ? obj["_id"].ToString(): ""});
 						}
@@ -75,7 +75,7 @@ namespace NeuBeacons.Core
 					var resultString = stream.ReadToEnd();
 					var serverFormat = new { @_id = "", title = "", description = "" };
 					var serverObject = JsonConvert.DeserializeAnonymousType(resultString, serverFormat);
-					beacon = new Beacon();
+					beacon = new Beacon(false);
 					beacon.ID = serverObject._id;
 					beacon.Name = serverObject.title;
 					beacon.Notes = serverObject.description;
@@ -92,7 +92,14 @@ namespace NeuBeacons.Core
 		{
 			var result = Task.Run (async () => {
 				httpReq = (HttpWebRequest)HttpWebRequest.Create (new Uri (this.path));
-				httpReq.Method = "POST";
+				if(item.IsNew)
+				{
+					httpReq.Method = "POST";
+				}
+				else
+				{
+					httpReq.Method = "PUT";
+				}
 				httpReq.ContentType = "application/json";
 				string postData = JsonConvert.SerializeObject (new { @_id = item.ID, title = item.Name, description = item.Notes });
 				byte[] byteArray = Encoding.UTF8.GetBytes (postData);

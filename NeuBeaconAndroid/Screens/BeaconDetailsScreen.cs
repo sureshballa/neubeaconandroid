@@ -12,7 +12,7 @@ namespace NeuBeaconsAndroid.Screens {
 	/// </summary>
 	[Activity (Label = "BeaconDetailsScreen")]			
 	public class BeaconDetailsScreen : Activity {
-		Beacon beacon = new Beacon();
+		Beacon beacon = new Beacon(true);
 		Button cancelDeleteButton;
 		EditText notesTextEdit;
 		EditText nameTextEdit;

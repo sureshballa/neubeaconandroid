@@ -14,7 +14,7 @@ public class BeaconListAdapter
 			"n_getCount:()I:GetGetCountHandler\n" +
 			"n_getView:(ILandroid/view/View;Landroid/view/ViewGroup;)Landroid/view/View;:GetGetView_ILandroid_view_View_Landroid_view_ViewGroup_Handler\n" +
 			"";
-		mono.android.Runtime.register ("NeuBeaconsAndroid.Adapters.BeaconListAdapter, NeuBeaconsAndroid, Version=1.0.5190.38218, Culture=neutral, PublicKeyToken=null", BeaconListAdapter.class, __md_methods);
+		mono.android.Runtime.register ("NeuBeaconsAndroid.Adapters.BeaconListAdapter, NeuBeaconsAndroid, Version=1.0.5190.40678, Culture=neutral, PublicKeyToken=null", BeaconListAdapter.class, __md_methods);
 	}
 
 
@@ -22,7 +22,7 @@ public class BeaconListAdapter
 	{
 		super ();
 		if (getClass () == BeaconListAdapter.class)
-			mono.android.TypeManager.Activate ("NeuBeaconsAndroid.Adapters.BeaconListAdapter, NeuBeaconsAndroid, Version=1.0.5190.38218, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
+			mono.android.TypeManager.Activate ("NeuBeaconsAndroid.Adapters.BeaconListAdapter, NeuBeaconsAndroid, Version=1.0.5190.40678, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
 	}
 
 
