@@ -39,7 +39,7 @@ namespace NeuBeaconsAndroid.Screens {
 			if(beaconListView != null) {
 				beaconListView.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) => {
 					var beaconDetails = new Intent (this, typeof (BeaconDetailsScreen));
-					beaconDetails.PutExtra ("TaskID", beacons[e.Position].ID);
+					beaconDetails.PutExtra ("BeaconID", beacons[e.Position].ID);
 					StartActivity (beaconDetails);
 				};
 			}

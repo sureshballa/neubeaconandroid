@@ -28,3 +28,5 @@ C:\Suresh\Xamarin Projects\NeuBeaconsAndroid\Beacon.Core\obj\Debug\NeuBeacons.Co
 C:\Suresh\Xamarin Projects\NeuBeaconsAndroid\Beacon.Core\obj\Debug\android\bin\NeuBeacons.Core.Anroid.apk
 C:\Suresh\Xamarin Projects\NeuBeaconsAndroid\Beacon.Core\obj\Debug\R.cs.flag
 C:\Suresh\Xamarin Projects\NeuBeaconsAndroid\Beacon.Core\obj\Debug\uploadflags.txt
+C:\Suresh\Xamarin Projects\NeuBeaconsAndroid\Beacon.Core\bin\Debug\Newtonsoft.Json.dll
+C:\Suresh\Xamarin Projects\NeuBeaconsAndroid\Beacon.Core\obj\Debug\Beacons.Core.Android.csprojResolveAssemblyReference.cache

@@ -64,3 +64,4 @@ C:\Suresh\Xamarin Projects\NeuBeaconsAndroid\NeuBeaconAndroid\obj\Debug\res\layo
 C:\Suresh\Xamarin Projects\NeuBeaconsAndroid\NeuBeaconAndroid\obj\Debug\res\layout\beaconlistitem.xml
 C:\Suresh\Xamarin Projects\NeuBeaconsAndroid\NeuBeaconAndroid\obj\Debug\R.cs.flag
 C:\Suresh\Xamarin Projects\NeuBeaconsAndroid\NeuBeaconAndroid\obj\Debug\uploadflags.txt
+C:\Suresh\Xamarin Projects\NeuBeaconsAndroid\NeuBeaconAndroid\bin\Debug\Newtonsoft.Json.dll

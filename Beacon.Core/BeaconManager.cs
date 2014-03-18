@@ -11,7 +11,7 @@ namespace NeuBeacons.Core {
 		{
 		}
 		
-		public static Beacon GetBeacon(int id)
+		public static Beacon GetBeacon(String id)
 		{
 			return BeaconRepositoryADO.GetBeacon(id);
 		}
@@ -20,13 +20,13 @@ namespace NeuBeacons.Core {
 		{
 			return new List<Beacon>(BeaconRepositoryADO.GetBeacons());
 		}
-		
-		public static int SaveBeacon (Beacon item)
+
+		public static void SaveBeacon (Beacon item)
 		{
-			return BeaconRepositoryADO.SaveBeacon(item);
+			BeaconRepositoryADO.SaveBeacon(item);
 		}
 		
-		public static int DeleteBeacon(int id)
+		public static String DeleteBeacon(String id)
 		{
 			return BeaconRepositoryADO.DeleteBeacon(id);
 		}

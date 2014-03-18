@@ -9,6 +9,7 @@ using System.Json;
 using System.Net;
 using System.Threading.Tasks;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace NeuBeacons.Core
 {
@@ -48,7 +49,8 @@ namespace NeuBeacons.Core
 						if(obj.ContainsKey("title") && obj.ContainsKey("description"))
 						{
 							beacons.Add(new Beacon() { Name = obj["title"] != null? obj["title"].ToString(): "", 
-								Notes = obj["description"] != null? obj["description"].ToString(): "" });
+								Notes = obj["description"] != null? obj["description"].ToString(): "",
+								ID = obj["_id"] != null ? obj["_id"].ToString(): ""});
 						}
 					}
 				}
@@ -59,43 +61,59 @@ namespace NeuBeacons.Core
 			return result;
 		}
 
-		public Beacon GetItem (int id) 
+		public Beacon GetItem (String id) 
 		{
-			var t = new Beacon ();
-
-			return t;
-		}
-
-		public int SaveItem (Beacon item) 
-		{
-			var result = Task.Run<int> (async () => {
-				httpReq = (HttpWebRequest)HttpWebRequest.Create (new Uri (this.path));
-				httpReq.Method = "POST";
-				httpReq.ContentType = "application/json";
-				string postData = "{\"_id\": \"ibeacon2UUID\", \"Title\": \"" + item.Name + "\", \"Description\": \"beacons1description\"}";
-				byte[] byteArray = Encoding.UTF8.GetBytes (postData);
-				httpReq.ContentLength = byteArray.Length;
-				Stream dataStream = httpReq.GetRequestStream ();
-				dataStream.Write(byteArray, 0, byteArray.Length);
-				dataStream.Close();
+			id = id.Replace("\"", "");
+			var result = Task.Run<Beacon> (async () =>  {
+				httpReq = (HttpWebRequest)HttpWebRequest.Create (new Uri ("http://neuibeaconsservice.herokuapp.com/ibeacons" + "/" + id));
 				var response = await httpReq.GetResponseAsync();
-				var resultString = "0";
+
+				Beacon beacon;
+
 				using(StreamReader stream = new StreamReader(response.GetResponseStream()))
 				{
-					resultString = stream.ReadToEnd();
+					var resultString = stream.ReadToEnd();
+					var serverFormat = new { @_id = "", title = "", description = "" };
+					var serverObject = JsonConvert.DeserializeAnonymousType(resultString, serverFormat);
+					beacon = new Beacon();
+					beacon.ID = serverObject._id;
+					beacon.Name = serverObject.title;
+					beacon.Notes = serverObject.description;
 				}
 
-				return int.Parse(resultString);
+				return beacon;
 
 			}).Result;
-
 
 			return result;
 		}
 
-		public int DeleteItem(int id) 
+		public void SaveItem (Beacon item) 
 		{
-			return 0;
+			var result = Task.Run (async () => {
+				httpReq = (HttpWebRequest)HttpWebRequest.Create (new Uri (this.path));
+				httpReq.Method = "POST";
+				httpReq.ContentType = "application/json";
+				string postData = JsonConvert.SerializeObject (new { @_id = item.ID, title = item.Name, description = item.Notes });
+				byte[] byteArray = Encoding.UTF8.GetBytes (postData);
+				httpReq.ContentLength = byteArray.Length;
+				Stream dataStream = httpReq.GetRequestStream ();
+				dataStream.Write (byteArray, 0, byteArray.Length);
+				dataStream.Close ();
+				var response = await httpReq.GetResponseAsync ();
+				var resultString = "0";
+				using (StreamReader stream = new StreamReader (response.GetResponseStream ())) {
+					resultString = stream.ReadToEnd ();
+				}
+
+			});
+
+			result.Wait ();
+		}
+
+		public String DeleteItem(String id) 
+		{
+			return String.Empty;
 		}
 	}
 }

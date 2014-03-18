@@ -51,7 +51,7 @@ namespace NeuBeacons.Core {
 			}
 		}
 
-		public static Beacon GetBeacon(int id)
+		public static Beacon GetBeacon(String id)
 		{
 			return me.db.GetItem(id);
 		}
@@ -61,12 +61,12 @@ namespace NeuBeacons.Core {
 			return me.db.GetItems();
 		}
 
-		public static int SaveBeacon (Beacon item)
+		public static void SaveBeacon (Beacon item)
 		{
-			return me.db.SaveItem(item);
+			me.db.SaveItem(item);
 		}
 
-		public static int DeleteBeacon(int id)
+		public static String DeleteBeacon(String id)
 		{
 			return me.db.DeleteItem(id);
 		}

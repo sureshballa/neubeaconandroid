@@ -2,6 +2,7 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Widget;
+using System;
 using NeuBeacons.Core;
 using NeuBeaconsAndroid;
 
@@ -11,19 +12,23 @@ namespace NeuBeaconsAndroid.Screens {
 	/// </summary>
 	[Activity (Label = "BeaconDetailsScreen")]			
 	public class BeaconDetailsScreen : Activity {
-		Beacon task = new Beacon();
+		Beacon beacon = new Beacon();
 		Button cancelDeleteButton;
 		EditText notesTextEdit;
 		EditText nameTextEdit;
 		Button saveButton;
+		Guid currentGenerateGuid;
 
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
 			
-			int taskID = Intent.GetIntExtra("TaskID", 0);
-			if(taskID > 0) {
-				task = BeaconManager.GetBeacon(taskID);
+			String beaconID = Intent.GetStringExtra("BeaconID");
+			if (!String.IsNullOrWhiteSpace(beaconID)) {
+				beacon = BeaconManager.GetBeacon(beaconID);
+			} else {
+				currentGenerateGuid = Guid.NewGuid ();
+				beacon.ID = currentGenerateGuid.ToString ();
 			}
 			
 			// set our layout to be the home screen
@@ -36,10 +41,10 @@ namespace NeuBeaconsAndroid.Screens {
 			cancelDeleteButton = FindViewById<Button>(Resource.Id.CancelDeleteButton);
 			
 			// set the cancel delete based on whether or not it's an existing task
-			cancelDeleteButton.Text = (task.ID == 0 ? "Cancel" : "Delete");
+			cancelDeleteButton.Text = (currentGenerateGuid != null ? "Cancel" : "Delete");
 			
-			nameTextEdit.Text = task.Name; 
-			notesTextEdit.Text = task.Notes;
+			nameTextEdit.Text = beacon.Name; 
+			notesTextEdit.Text = beacon.Notes;
 
 			// button clicks 
 			cancelDeleteButton.Click += (sender, e) => { CancelDelete(); };
@@ -48,16 +53,16 @@ namespace NeuBeaconsAndroid.Screens {
 
 		void Save()
 		{
-			task.Name = nameTextEdit.Text;
-			task.Notes = notesTextEdit.Text;
-			BeaconManager.SaveBeacon(task);
+			beacon.Name = nameTextEdit.Text;
+			beacon.Notes = notesTextEdit.Text;
+			BeaconManager.SaveBeacon(beacon);
 			Finish();
 		}
 		
 		void CancelDelete()
 		{
-			if (task.ID != 0) {
-				BeaconManager.DeleteBeacon(task.ID);
+			if (currentGenerateGuid == null) {
+				BeaconManager.DeleteBeacon(beacon.ID);
 			}
 			Finish();
 		}

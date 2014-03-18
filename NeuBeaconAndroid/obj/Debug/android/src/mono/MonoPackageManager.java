@@ -68,6 +68,7 @@ class MonoPackageManager_Resources {
 	public static final String[] Assemblies = new String[]{
 		"NeuBeaconsAndroid.dll",
 		"NeuBeacons.Core.Anroid.dll",
+		"Newtonsoft.Json.dll",
 	};
 	public static final String[] Dependencies = new String[]{
 	};
