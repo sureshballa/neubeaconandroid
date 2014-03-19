@@ -15,8 +15,6 @@ namespace NeuBeacons.Core {
 
 		public async static Task<Beacon> GetBeaconAsync(String id)
 		{
-			id = id.Replace("\"", "");
-
 			var httpReq = (HttpWebRequest)HttpWebRequest.Create (new Uri (BeaconRepositoryADO.URL + "/" + id));
 			var response = await httpReq.GetResponseAsync();
 
@@ -44,17 +42,12 @@ namespace NeuBeacons.Core {
 			using(StreamReader stream = new StreamReader(response.GetResponseStream()))
 			{
 				var resultString = stream.ReadToEnd();
-				var jsonObject =JsonObject.Parse(resultString);
+				var serverFormat = new[] { new {@_id = "", title = "", description = ""} };
+				var serverObjects = JsonConvert.DeserializeAnonymousType(resultString, serverFormat);
 
-				foreach(var beacon in (JsonArray)jsonObject)
+				foreach (var serverObject in serverObjects) 
 				{
-					var obj = beacon as JsonObject;
-					if(obj.ContainsKey("title") && obj.ContainsKey("description"))
-					{
-						beacons.Add(new Beacon(false) { Name = obj["title"] != null? obj["title"].ToString(): "", 
-							Notes = obj["description"] != null? obj["description"].ToString(): "",
-							ID = obj["_id"] != null ? obj["_id"].ToString(): ""});
-					}
+					beacons.Add (new Beacon (false) { ID = serverObject._id, Name = serverObject.title, Notes = serverObject.description });
 				}
 			}
 
