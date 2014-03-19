@@ -45,11 +45,11 @@ namespace NeuBeaconsAndroid.Screens {
 			}
 		}
 		
-		protected override void OnResume ()
+		protected async override void OnResume ()
 		{
 			base.OnResume ();
 
-			beacons = BeaconManager.GetBeacons();
+			beacons = await BeaconManager.GetBeaconsAsync();
 			
 			// create our adapter
 			beaconList = new Adapters.BeaconListAdapter(this, beacons);

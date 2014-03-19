@@ -1,27 +1,26 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Beacon.Core\BeaconDatabaseADO.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="NeuBeaconAndroid\Properties\AndroidManifest.xml">
     <Files>
-      <File FileName="NeuBeaconAndroid\Screens\BeaconDetailsScreen.cs" Line="8" Column="28" />
-      <File FileName="Beacon.Core\BeaconManager.cs" Line="4" Column="11" />
-      <File FileName="Beacon.Core\BeaconRepositoryADO.cs" Line="15" Column="3" />
-      <File FileName="Beacon.Core\BeaconDatabaseADO.cs" Line="84" Column="6" />
-      <File FileName="NeuBeaconAndroid\Screens\HomeScreen.cs" Line="9" Column="28" />
-      <File FileName="Beacon.Core\Beacon.cs" Line="7" Column="2" />
-      <File FileName="NeuBeaconAndroid\Adapters\BeaconListAdapter.cs" Line="6" Column="28" />
-      <File FileName="NeuBeaconAndroid\Resources\Resource.designer.cs" Line="14" Column="11" />
-      <File FileName="NeuBeaconAndroid\Properties\AssemblyInfo.cs" Line="8" Column="44" />
-      <File FileName="NeuBeaconAndroid\Properties\AndroidManifest.xml" Line="3" Column="86" />
-      <File FileName="NeuBeaconAndroid\Resources\values\Strings.xml" Line="4" Column="26" />
+      <File FileName="NeuBeaconAndroid\Screens\BeaconDetailsScreen.cs" Line="1" Column="1" />
+      <File FileName="Beacon.Core\BeaconManager.cs" Line="1" Column="1" />
+      <File FileName="Beacon.Core\BeaconRepositoryADO.cs" Line="76" Column="1" />
+      <File FileName="Beacon.Core\BeaconDatabaseADO.cs" Line="1" Column="1" />
+      <File FileName="NeuBeaconAndroid\Screens\HomeScreen.cs" Line="1" Column="1" />
+      <File FileName="Beacon.Core\Beacon.cs" Line="1" Column="1" />
+      <File FileName="NeuBeaconAndroid\Adapters\BeaconListAdapter.cs" Line="1" Column="1" />
+      <File FileName="NeuBeaconAndroid\Resources\Resource.designer.cs" Line="1" Column="1" />
+      <File FileName="NeuBeaconAndroid\Properties\AssemblyInfo.cs" Line="1" Column="1" />
+      <File FileName="NeuBeaconAndroid\Properties\AndroidManifest.xml" Line="8" Column="12" />
+      <File FileName="NeuBeaconAndroid\Resources\values\Strings.xml" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Beacons.Core.Android" expanded="True">
             <Node name="References" expanded="True" />
-            <Node name="BeaconDatabaseADO.cs" selected="True" />
           </Node>
-          <Node name="NeuBeaconsAndroid" expanded="True">
+          <Node name="NeuBeaconsAndroid" expanded="True" selected="True">
             <Node name="References" expanded="True" />
             <Node name="Adapters" expanded="True" />
             <Node name="Properties" expanded="True" />
@@ -39,21 +38,9 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="C:\Suresh\Xamarin Projects\NeuBeaconsAndroid\Beacon.Core\BeaconDatabaseADO.cs" line="56" column="17" />
-      <Breakpoint file="C:\Suresh\Xamarin Projects\NeuBeaconsAndroid\Beacon.Core\BeaconDatabaseADO.cs" line="38" column="1" />
-      <Breakpoint file="C:\Suresh\Xamarin Projects\NeuBeaconsAndroid\Beacon.Core\BeaconDatabaseADO.cs" line="73" column="1" />
-      <Breakpoint file="C:\Suresh\Xamarin Projects\NeuBeaconsAndroid\Beacon.Core\BeaconDatabaseADO.cs" line="74" column="1" />
-      <Breakpoint file="C:\Suresh\Xamarin Projects\NeuBeaconsAndroid\Beacon.Core\BeaconDatabaseADO.cs" line="76" column="53" />
-      <Breakpoint file="C:\Suresh\Xamarin Projects\NeuBeaconsAndroid\Beacon.Core\BeaconDatabaseADO.cs" line="77" column="1" />
-      <Breakpoint file="C:\Suresh\Xamarin Projects\NeuBeaconsAndroid\Beacon.Core\BeaconDatabaseADO.cs" line="78" column="1" />
-      <Breakpoint file="C:\Suresh\Xamarin Projects\NeuBeaconsAndroid\Beacon.Core\BeaconDatabaseADO.cs" line="79" column="1" />
-      <Breakpoint file="C:\Suresh\Xamarin Projects\NeuBeaconsAndroid\Beacon.Core\BeaconDatabaseADO.cs" line="80" column="1" />
-      <Breakpoint file="C:\Suresh\Xamarin Projects\NeuBeaconsAndroid\Beacon.Core\BeaconDatabaseADO.cs" line="81" column="1" />
-      <Breakpoint file="C:\Suresh\Xamarin Projects\NeuBeaconsAndroid\Beacon.Core\BeaconDatabaseADO.cs" line="82" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <AuthorInfo Name="Suresh.Balla" Email="" Copyright="Suresh.Balla" Company="" Trademark="" />
-  <MonoDevelop.Ide.ItemProperties.NeuBeaconsAndroid AndroidDeviceId-Debug="emulator-5554" MonoForAntroid.PreferredDevice="3.7&quot; WVGA (Nexus One)" />
+  <MonoDevelop.Ide.ItemProperties.NeuBeaconsAndroid MonoForAntroid.PreferredDevice="3.7&quot; WVGA (Nexus One)" />
 </Properties>

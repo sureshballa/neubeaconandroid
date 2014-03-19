@@ -3,12 +3,13 @@ using Android.Content;
 using Android.OS;
 using Android.Widget;
 using System;
+using System.Threading.Tasks;
 using NeuBeacons.Core;
 using NeuBeaconsAndroid;
 
 namespace NeuBeaconsAndroid.Screens {
 	/// <summary>
-	/// View/edit a Task
+	/// View/edit a Beacon
 	/// </summary>
 	[Activity (Label = "BeaconDetailsScreen")]			
 	public class BeaconDetailsScreen : Activity {
@@ -19,13 +20,13 @@ namespace NeuBeaconsAndroid.Screens {
 		Button saveButton;
 		Guid currentGenerateGuid;
 
-		protected override void OnCreate (Bundle bundle)
+		protected async override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
 			
 			String beaconID = Intent.GetStringExtra("BeaconID");
 			if (!String.IsNullOrWhiteSpace(beaconID)) {
-				beacon = BeaconManager.GetBeacon(beaconID);
+				beacon = await BeaconManager.GetBeaconAsync(beaconID);
 			} else {
 				currentGenerateGuid = Guid.NewGuid ();
 				beacon.ID = currentGenerateGuid.ToString ();
@@ -42,27 +43,27 @@ namespace NeuBeaconsAndroid.Screens {
 			
 			// set the cancel delete based on whether or not it's an existing task
 			cancelDeleteButton.Text = (currentGenerateGuid != null ? "Cancel" : "Delete");
-			
+
 			nameTextEdit.Text = beacon.Name; 
 			notesTextEdit.Text = beacon.Notes;
 
 			// button clicks 
-			cancelDeleteButton.Click += (sender, e) => { CancelDelete(); };
-			saveButton.Click += (sender, e) => { Save(); };
+			cancelDeleteButton.Click += async (sender, e) => { await CancelDelete(); };
+			saveButton.Click += async (sender, e) => { await Save(); };
 		}
 
-		void Save()
+		protected async Task Save()
 		{
 			beacon.Name = nameTextEdit.Text;
 			beacon.Notes = notesTextEdit.Text;
-			BeaconManager.SaveBeacon(beacon);
+			await BeaconManager.SaveBeaconAsync(beacon);
 			Finish();
 		}
 		
-		void CancelDelete()
+		protected async Task CancelDelete()
 		{
 			if (currentGenerateGuid == null) {
-				BeaconManager.DeleteBeacon(beacon.ID);
+				await BeaconManager.DeleteBeaconAsync(beacon.ID);
 			}
 			Finish();
 		}

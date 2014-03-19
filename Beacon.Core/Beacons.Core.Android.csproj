@@ -50,7 +50,6 @@
   <ItemGroup />
   <ItemGroup>
     <Compile Include="Beacon.cs" />
-    <Compile Include="BeaconDatabaseADO.cs" />
     <Compile Include="BeaconManager.cs" />
     <Compile Include="BeaconRepositoryADO.cs" />
   </ItemGroup>

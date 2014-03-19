@@ -1,74 +1,95 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
+using System.Text;
+using Newtonsoft.Json;
+using System.Data;
+using System.Json;
+using System.Net;
 
 namespace NeuBeacons.Core {
 	public class BeaconRepositoryADO {
-		BeaconDatabase db = null;
-		protected static string dbLocation;		
-		protected static BeaconRepositoryADO me;		
 
-		static BeaconRepositoryADO ()
+		protected static string URL = "http://neuibeaconsservice.herokuapp.com/ibeacons";
+
+		public async static Task<Beacon> GetBeaconAsync(String id)
 		{
-			me = new BeaconRepositoryADO();
+			id = id.Replace("\"", "");
+
+			var httpReq = (HttpWebRequest)HttpWebRequest.Create (new Uri (BeaconRepositoryADO.URL + "/" + id));
+			var response = await httpReq.GetResponseAsync();
+
+			Beacon beacon;
+
+			using(StreamReader stream = new StreamReader(response.GetResponseStream()))
+			{
+				var resultString = stream.ReadToEnd();
+				var serverFormat = new { @_id = "", title = "", description = "" };
+				var serverObject = JsonConvert.DeserializeAnonymousType(resultString, serverFormat);
+				beacon = new Beacon(false);
+				beacon.ID = serverObject._id;
+				beacon.Name = serverObject.title;
+				beacon.Notes = serverObject.description;
+			}
+
+			return beacon;
 		}
 
-		protected BeaconRepositoryADO ()
+		public async static Task<IList<Beacon>> GetBeaconsAsync ()
 		{
-			// set the db location
-			//dbLocation = DatabaseFilePath;
+			var httpReq = (HttpWebRequest)HttpWebRequest.Create (new Uri (BeaconRepositoryADO.URL));
+			var response = await httpReq.GetResponseAsync();
+			List<Beacon> beacons = new List<Beacon>();
+			using(StreamReader stream = new StreamReader(response.GetResponseStream()))
+			{
+				var resultString = stream.ReadToEnd();
+				var jsonObject =JsonObject.Parse(resultString);
 
-			// instantiate the database	
-			db = new BeaconDatabase("http://neuibeaconsservice.herokuapp.com/ibeacons");
+				foreach(var beacon in (JsonArray)jsonObject)
+				{
+					var obj = beacon as JsonObject;
+					if(obj.ContainsKey("title") && obj.ContainsKey("description"))
+					{
+						beacons.Add(new Beacon(false) { Name = obj["title"] != null? obj["title"].ToString(): "", 
+							Notes = obj["description"] != null? obj["description"].ToString(): "",
+							ID = obj["_id"] != null ? obj["_id"].ToString(): ""});
+					}
+				}
+			}
+
+			return beacons;
 		}
 
-		public static string DatabaseFilePath {
-			get { 
-				var sqliteFilename = "TaskDatabase.db3";
-				#if NETFX_CORE
-				var path = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, sqliteFilename);
-				#else
-
-				#if SILVERLIGHT
-				// Windows Phone expects a local path, not absolute
-				var path = sqliteFilename;
-				#else
-
-				#if __ANDROID__
-				// Just use whatever directory SpecialFolder.Personal returns
-				string libraryPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal); ;
-				#else
-				// we need to put in /Library/ on iOS5.1 to meet Apple's iCloud terms
-				// (they don't want non-user-generated data in Documents)
-				string documentsPath = Environment.GetFolderPath (Environment.SpecialFolder.Personal); // Documents folder
-				string libraryPath = Path.Combine (documentsPath, "..", "Library"); // Library folder
-				#endif
-				var path = Path.Combine (libraryPath, sqliteFilename);
-				#endif
-
-				#endif
-				return path;	
+		public async static Task SaveBeaconAsync(Beacon item)
+		{
+			var httpReq = (HttpWebRequest)HttpWebRequest.Create (new Uri (BeaconRepositoryADO.URL));
+			if(item.IsNew)
+			{
+				httpReq.Method = "POST";
+			}
+			else
+			{
+				httpReq.Method = "PUT";
+			}
+			httpReq.ContentType = "application/json";
+			string postData = JsonConvert.SerializeObject (new { @_id = item.ID, title = item.Name, description = item.Notes });
+			byte[] byteArray = Encoding.UTF8.GetBytes (postData);
+			httpReq.ContentLength = byteArray.Length;
+			Stream dataStream = httpReq.GetRequestStream ();
+			dataStream.Write (byteArray, 0, byteArray.Length);
+			dataStream.Close ();
+			var response = await httpReq.GetResponseAsync();
+			var resultString = "0";
+			using (StreamReader stream = new StreamReader (response.GetResponseStream ())) 
+			{
+				resultString = stream.ReadToEnd ();
 			}
 		}
 
-		public static Beacon GetBeacon(String id)
+		public static Task DeleteBeaconAsync(String id)
 		{
-			return me.db.GetItem(id);
-		}
-
-		public static IEnumerable<Beacon> GetBeacons ()
-		{
-			return me.db.GetItems();
-		}
-
-		public static void SaveBeacon (Beacon item)
-		{
-			me.db.SaveItem(item);
-		}
-
-		public static String DeleteBeacon(String id)
-		{
-			return me.db.DeleteItem(id);
+			return null;
 		}
 	}
 }

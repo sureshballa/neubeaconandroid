@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace NeuBeacons.Core {
 	/// <summary>
@@ -11,24 +12,24 @@ namespace NeuBeacons.Core {
 		{
 		}
 		
-		public static Beacon GetBeacon(String id)
+		public async static Task<Beacon> GetBeaconAsync(String id)
 		{
-			return BeaconRepositoryADO.GetBeacon(id);
+			return await BeaconRepositoryADO.GetBeaconAsync(id);
 		}
 		
-		public static IList<Beacon> GetBeacons ()
+		public async static Task<IList<Beacon>> GetBeaconsAsync ()
 		{
-			return new List<Beacon>(BeaconRepositoryADO.GetBeacons());
+			return await BeaconRepositoryADO.GetBeaconsAsync();
 		}
 
-		public static void SaveBeacon (Beacon item)
+		public async static Task SaveBeaconAsync (Beacon item)
 		{
-			BeaconRepositoryADO.SaveBeacon(item);
+			await BeaconRepositoryADO.SaveBeaconAsync(item);
 		}
 		
-		public static String DeleteBeacon(String id)
+		public async static Task DeleteBeaconAsync(String id)
 		{
-			return BeaconRepositoryADO.DeleteBeacon(id);
+			await BeaconRepositoryADO.DeleteBeaconAsync(id);
 		}
 	}
 }
